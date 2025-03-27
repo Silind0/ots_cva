@@ -17,7 +17,6 @@ window_name = "TIC-80"
 #################################
 
 model = YOLO("model/classify/kirkir_classify_model_best.pt")
-# model = YOLO("model/classify/best_openvino_model/") # Почему-то сломалось, видимо из-за лишнего
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
