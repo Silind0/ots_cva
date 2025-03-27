@@ -129,39 +129,6 @@ def processGameScreen(model, result):
     global over
     global enemies
 
-    # boxes = results.boxes
-    #
-    # for box in boxes:
-    #     b = box.xyxy[0] # get box coordinates in (left, top, right, bottom) format
-    #     c = model.names[int(box.cls)]
-    #
-    #
-    #     if c in game_start_labels:
-    #         start = b
-    #         coord = getBoxCenter(b)
-    #         print("start center= ", coord[0], coord[1])
-    #
-    #
-    #     if c in player_labels:
-    #         player = b
-    #         coord = getBoxCenter(b)
-    #         print("player center= ", coord[0], coord[1])
-    #
-    #
-    #     if c in game_over_labels:
-    #         over = getBoxCenter(b)
-    #         print("pause center= ", over[0], over[1])
-    #
-    #
-    #     if c in enemies_labels:
-    #         enemies.append(b)
-    #
-    #     if c in bullet_labels:
-    #         bullets.append(b)
-    #
-    #     if c in bonus_labels:
-    #         bonuses.append(b)
-
 
 def clearState():
     global over
@@ -207,21 +174,6 @@ def bot(model, result):
         pressKey(KeyCode.from_char('z'))
     else:
         releaseAllKeys()
-
-    # #print(start)
-    # if start is not None: # if there message about "Press fire" then start game/match
-    #     releaseAllKeys()
-    #     clickStart()
-    #     clearState()
-    #
-    # if (over is not None):
-    #     releaseAllKeys()
-    #
-    # if (len(enemies) < 1):
-    #     releaseAllKeys()
-    #
-    # if (over is None) & (player is not None):  # if there is player and game no "Game over message"
-    #     movePlayer()
 
 
 
