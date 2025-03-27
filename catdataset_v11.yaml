@@ -1,0 +1,21 @@
+path: 'catdataset/'
+train: 'images'
+val: 'images'
+
+# class names
+names: 
+  0: '0_Bonus'
+  1: '1_Game_Over'
+  2: '2_Game_Start'
+  3: '3_Press_Fire'
+  4: '4_Player'
+  5: '5_Common_Enemy'
+  6: '6_Radiation_Man'
+  7: '7_Organ'
+  8: '8_Sentinel'
+  9: '9_Mouth'
+  10: '10_Miner'
+  11: '11_Tank_Purple'
+  12: '12_Tank_Green'
+  13: '13_Bullet'
+  
