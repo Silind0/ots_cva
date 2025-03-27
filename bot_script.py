@@ -188,6 +188,16 @@ def clickStart():
     press_start_time = None
     pressKey(KeyCode.from_char('z'))
 
+def can_move(px, py, key, fw, fh, step=5):
+    if key == Key.left and px > step:
+        return True
+    if key == Key.right and px < fw - step:
+        return True
+    if key == Key.up and py > step:
+        return True
+    if key == Key.down and py < fh - step:
+        return True
+    return False
 
 def decideMoveKey():
     print('decide move func')
@@ -200,19 +210,20 @@ def decideMoveKey():
     if len(enemies) > 0:
         (px, py) = getBoxCenter(player)
         fw, fh = w_width, w_height
+        step = 5
 
         # Bullets evasion
         for bullet in bullets:
             (bx, by) = getBoxCenter(bullet)
-            if abs(by - py) < 20 and abs(bx - px) < 30:  # Horizontal bullet
-                if px < fw - 10:
+            if abs(by - py) < 20 and abs(bx - px) < 30:  # пуля по горизонтали
+                if can_move(px, py, Key.right, fw, fh):
                     return Key.right
-                elif px > 10:
+                elif can_move(px, py, Key.left, fw, fh):
                     return Key.left
-            elif abs(bx - px) < 20 and abs(by - py) < 30:  # Vertical bullet
-                if py < fh - 10:
+            elif abs(bx - px) < 20 and abs(by - py) < 30:  # пуля по вертикали
+                if can_move(px, py, Key.down, fw, fh):
                     return Key.down
-                elif py > 10:
+                elif can_move(px, py, Key.up, fw, fh):
                     return Key.up
 
         # Run away from near enemies
@@ -222,9 +233,15 @@ def decideMoveKey():
             dy = ey - py
             if abs(dx) < 30 and abs(dy) < 30:
                 if abs(dx) > abs(dy):
-                    return Key.left if dx > 0 and px > 10 else Key.right
+                    if dx > 0 and can_move(px, py, Key.left, fw, fh):
+                        return Key.left
+                    elif dx < 0 and can_move(px, py, Key.right, fw, fh):
+                        return Key.right
                 else:
-                    return Key.up if dy > 0 and py > 10 else Key.down
+                    if dy > 0 and can_move(px, py, Key.up, fw, fh):
+                        return Key.up
+                    elif dy < 0 and can_move(px, py, Key.down, fw, fh):
+                        return Key.down
 
         # Fight towards enemy
         if enemies:
@@ -235,21 +252,21 @@ def decideMoveKey():
             dy = ty - py
 
             if abs(dx) > abs(dy):
-                if dx > 0 and px < fw - 10:
+                if dx > 0 and can_move(px, py, Key.right, fw, fh):
                     return Key.right
-                elif dx < 0 and px > 10:
+                elif dx < 0 and can_move(px, py, Key.left, fw, fh):
                     return Key.left
             else:
-                if dy > 0 and py < fh - 10:
+                if dy > 0 and can_move(px, py, Key.down, fw, fh):
                     return Key.down
-                elif dy < 0 and py > 10:
+                elif dy < 0 and can_move(px, py, Key.up, fw, fh):
                     return Key.up
 
     if len(enemies) == 0:
         return None
 
 
-    return None
+    return random.choice([Key.up, Key.down, Key.right, Key.left])
 
 
 def movePlayer():
@@ -280,6 +297,8 @@ def bot():
 
     if (over is not None):
         releaseAllKeys()
+        clickStart()
+        clearState()
 
     if (len(enemies) < 1):
         releaseAllKeys()

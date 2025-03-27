@@ -123,12 +123,6 @@ def getBoxCenter(box):
     (left, top, right, bottom) = box
     return ( int((left + ((right - left)/2)).item()), int((top + ((bottom - top)/2)).item()) )
 
-def processGameScreen(model, result):
-    global start
-    global player
-    global over
-    global enemies
-
 
 def clearState():
     global over
@@ -162,6 +156,7 @@ def bot(model, result):
     print('entering bot() function')
 
     decision = result.summary()[0]['name']
+    releaseAllKeys()
     if decision == 'KEY_UP':
         pressKey(Key.up)
     elif decision == 'KEY_DOWN':
@@ -197,7 +192,6 @@ while True:
     print('process')
     if len(results) > 0:
         print('process')
-        processGameScreen(model = model, result = results[0])
         bot(model = model, result = results[0])
         clearState()
 
