@@ -1,0 +1,16 @@
+Detection labels:
+
+0_Bonus
+1_Game_Over
+2_Game_Start
+3_Press_Fire
+4_Player
+5_Common_Enemy
+6_Radiation_Man
+7_Organ
+8_Sentinel
+9_Mouth
+10_Miner
+11_Tank_Purple
+12_Tank_Green
+13_Bullet

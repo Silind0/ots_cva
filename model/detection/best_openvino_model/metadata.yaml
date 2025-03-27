@@ -1,0 +1,33 @@
+description: Ultralytics YOLO11n model trained on catdataset_v11.yaml
+author: Ultralytics
+date: '2025-03-26T19:47:03.016060'
+version: 8.3.96
+license: AGPL-3.0 License (https://ultralytics.com/license)
+docs: https://docs.ultralytics.com
+stride: 32
+task: detect
+batch: 1
+imgsz:
+- 640
+- 640
+names:
+  0: 0_Bonus
+  1: 1_Game_Over
+  2: 2_Game_Start
+  3: 3_Press_Fire
+  4: 4_Player
+  5: 5_Common_Enemy
+  6: 6_Radiation_Man
+  7: 7_Organ
+  8: 8_Sentinel
+  9: 9_Mouth
+  10: 10_Miner
+  11: 11_Tank_Purple
+  12: 12_Tank_Green
+  13: 13_Bullet
+args:
+  batch: 1
+  half: false
+  int8: false
+  dynamic: false
+  nms: false
