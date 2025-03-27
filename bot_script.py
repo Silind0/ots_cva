@@ -188,7 +188,6 @@ def clickStart():
     press_start_time = None
     pressKey(KeyCode.from_char('z'))
 
-
 def decideMoveKey():
     print('decide move func')
     global player
@@ -280,6 +279,8 @@ def bot():
 
     if (over is not None):
         releaseAllKeys()
+        clickStart()
+        clearState()
 
     if (len(enemies) < 1):
         releaseAllKeys()
